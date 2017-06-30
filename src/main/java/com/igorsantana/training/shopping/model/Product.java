@@ -23,6 +23,9 @@ public class Product extends AbstractModel {
 	@Column(name = "photo_url", length = 500)
 	private String photoUrl;
 
+	@Column(name = "slug", length = 500, unique = true)
+	private String slug;
+
 	public String getName() {
 		return name;
 	}
@@ -53,6 +56,14 @@ public class Product extends AbstractModel {
 
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
+	}
+
+	public String getSlug() {
+		return slug;
+	}
+
+	public void setSlug(String slug) {
+		this.slug = slug;
 	}
 
 }
