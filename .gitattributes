@@ -1,0 +1,4 @@
+src/main/resources/static/javascripts/*.min.js linguist-vendored
+src/main/resources/static/stylesheets/*.min.css linguist-vendored
+src/main/resources/static/stylesheets/*.min.map linguist-vendored
+
