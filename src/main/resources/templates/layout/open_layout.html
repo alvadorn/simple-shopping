@@ -2,12 +2,14 @@
 <head>
 	<title>Neo Shopping</title>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<link th:href="@{/stylesheets/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/stylesheets/style.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<header th:replace="layout/open_header :: header"></header>
 	
-	<div layout:fragment="body"></div>
+	<th:block layout:fragment="body"></th:block>
 	
 	<footer th:replace="layout/open_footer :: footer"></footer>
 	

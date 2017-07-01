@@ -1,0 +1,39 @@
+<html layout:decorator="layout/open_layout">
+<head>
+</head>
+<body>
+	<th:block layout:fragment="body">
+	<div class="container-fluid">
+		<section id="promotions" class="carousel slide" data-ride="carousel" th:if="${promotions.size() >= 0}">
+			<ol class="carousel-indicators">
+				<li th:each="i : ${#numbers.sequence(0,promotions.size())}" th:attr="data-target-id=${i}" th:class="${i == 0}? 'active'"></li>
+			</ol>
+			
+			<article class="caroulsel-inner">
+				<div class="item active">
+				heahuehuahuehuaehu
+					<img src=""></img>
+				</div>
+			</article>
+			
+			<!-- Slide control -->
+			<a class="left carousel-control" href="#promotions" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#promotions" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+			
+		</section>
+		
+		ololl
+		
+		
+		<li th:replace="product/_items :: items"></li>
+	</div>
+	</th:block>
+
+</body>
+</html>

@@ -1,8 +1,9 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/open_layout">
 <head></head>
 <body>
-	<div layout:fragment="body">
+	<th:block layout:fragment="body">
 	Teste
-	</div>
+		<li th:replace="product/_items :: items"></li>
+	</th:block>
 </body>
 </html>
