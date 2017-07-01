@@ -20,14 +20,15 @@ public class OrderController {
 
 	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
 	public ModelAndView checkout(Order cart) {
-		if (SecurityContextHolder.getContext().getAuthentication() != null
+		/*if (SecurityContextHolder.getContext().getAuthentication() != null
 				&& SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
 			ModelAndView mav = new ModelAndView("");
 			return mav;
 		} else {
 			// TODO return login page
 			return null;
-		}
+		}*/
+		return null;
 
 	}
 

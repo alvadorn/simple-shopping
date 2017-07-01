@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.igorsantana.training.shopping.model.Product;
 import com.igorsantana.training.shopping.repository.ProductRepository;
 
-@RequestMapping("/products")
 @Controller
+@RequestMapping("/products")
 public class ProductController {
 	
 	@Autowired
@@ -18,7 +18,7 @@ public class ProductController {
 
 	@RequestMapping("/")
 	public ModelAndView index() {
-		ModelAndView mav = new ModelAndView("");
+		ModelAndView mav = new ModelAndView("product/index");
 		return mav;
 	}
 	
