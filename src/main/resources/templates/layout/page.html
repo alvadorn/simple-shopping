@@ -1,0 +1,7 @@
+<th:block th:fragment="pages(pageable, url)">
+<div class="paginate">
+	<a th:href="@{${url}(page=${pageable.getNumber() > 0 ? pageable.getNumber() -1 : pageable.getNumber()})}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+	<a th:each="page : ${#numbers.sequence(0, pageable.getTotalPages(), pageable.getTotalPages() % 10)}" th:href="@{${url}(page=${page})}" th:text="${page + 1}"></a>
+	<a th:href="@{${url}(page=${pageable.getNumber() > 0 ? pageable.getNumber() +1 : pageable.getNumber()})}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+</th:block>
