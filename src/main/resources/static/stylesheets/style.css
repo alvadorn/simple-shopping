@@ -1,5 +1,55 @@
 #promotions {
 	width: 60%;
 	height: 50%;
-	left: 20%;
+	left: 20%; 
+}
+
+#form-search-bar {
+	position: relative;
+	left: 8%;
+}
+
+#search-bar {
+	height: 80px;
+	width: 128rem;
+}
+
+#search-bar-icon, .search-bar-icons {
+	font-size: 66px;
+}
+
+.navbar-right-fix {
+	position: absolute;
+	right: 0%;
+	top: 10%;
+}
+
+.navbar-right-fix li a {
+	color: inherit;
+}
+
+.navbar-right-fix li a .nav-span {
+	vertical-align: 0%;
+	font-size: 20px;
+}
+
+.navbar-right-fix li {
+	display: inline;
+	float: left;
+	right: 0%;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 150px;
+    height: 100px;
+    padding-top: 0;
+}
+
+
+
+.logo-neo {
+	position: absolute;
+	top: -3%;
+	left: 1%;
 }
