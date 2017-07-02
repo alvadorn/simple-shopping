@@ -1,6 +1,7 @@
 package com.igorsantana.training.shopping.model;
 
-import java.time.ZonedDateTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -19,13 +20,13 @@ public abstract class AbstractModel {
 	protected Boolean removed;
 
 	@Column(nullable = true, name = "removed_at")
-	protected ZonedDateTime removedAt;
+	protected OffsetDateTime removedAt;
 
 	@Column(nullable = false, name = "created_at")
-	protected ZonedDateTime createdAt;
+	protected OffsetDateTime createdAt;
 
 	@Column(nullable = false, name = "updated_at")
-	protected ZonedDateTime updatedAt;
+	protected OffsetDateTime updatedAt;
 
 	public Long getId() {
 		return id;
@@ -43,27 +44,27 @@ public abstract class AbstractModel {
 		this.removed = removed;
 	}
 
-	public ZonedDateTime getRemovedAt() {
+	public OffsetDateTime getRemovedAt() {
 		return removedAt;
 	}
 
-	public void setRemovedAt(ZonedDateTime removedAt) {
+	public void setRemovedAt(OffsetDateTime removedAt) {
 		this.removedAt = removedAt;
 	}
 
-	public ZonedDateTime getCreatedAt() {
+	public OffsetDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(ZonedDateTime createdAt) {
+	public void setCreatedAt(OffsetDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public ZonedDateTime getUpdatedAt() {
+	public OffsetDateTime getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(ZonedDateTime updatedAt) {
+	public void setUpdatedAt(OffsetDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

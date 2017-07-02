@@ -1,2 +1,7 @@
-<li th:fragment="items">
-</li>
+<ul th:fragment="items(products)" class="list-group">
+	<li th:each="product : ${products.getContent()}" class="list-group-item col-sm-4">
+		<article>
+			<h1 th:text="${product.name}"></h1>
+		</article>
+	</li>
+</ul>

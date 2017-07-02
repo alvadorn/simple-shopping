@@ -1,3 +1,15 @@
+<th:block th:fragment="pages_bootstrap(pageable, url)">
+<nav aria-label="...">
+	<ul class="pagination">
+		<li th:class="${pageable.getNumber()} == 0 ? 'disabled'"><a th:href="@{${url}(page=${pageable.getNumber() > 0 ? pageable.getNumber() -1 : pageable.getNumber()})}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+		<li th:each="page : ${#numbers.sequence(0, pageable.getTotalPages()-1, pageable.getTotalPages() % 10)}" th:class="${pageable.getNumber()} == ${page} ? 'active'" th:if="${pageable.getTotalPages() &gt; 10}"><a th:href="@{${url}(page=${page})}" th:text="${page}"></a></li>
+		<li th:each="page : ${#numbers.sequence(0, pageable.getTotalPages()-1)}" th:class="${pageable.getNumber()} == ${page} ? 'active'" th:if="${pageable.getTotalPages() &lt; 11}"><a th:href="@{${url}(page=${page})}" th:text="${page + 1}"></a></li>
+		
+		<li th:class="${pageable.getNumber()} == ${pageable.getTotalPages()} ? 'disabled'"><a th:href="@{${url}(page=${pageable.getNumber() > 0 ? pageable.getNumber() +1 : pageable.getNumber()})}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+	</ul>
+</nav>
+</th:block>
+
 <th:block th:fragment="pages(pageable, url)">
 <div class="paginate">
 	<a th:href="@{${url}(page=${pageable.getNumber() > 0 ? pageable.getNumber() -1 : pageable.getNumber()})}"><span class="glyphicon glyphicon-chevron-left"></span></a>

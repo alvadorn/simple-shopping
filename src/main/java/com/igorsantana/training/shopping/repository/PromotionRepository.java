@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.igorsantana.training.shopping.model.Promotion;
 
 public interface PromotionRepository extends JpaRepository<Promotion, Long> {
-	
+
 	List<Promotion> findFirst10ByEndDateAfter(ZonedDateTime date);
 }

@@ -2,8 +2,13 @@
 <head></head>
 <body>
 	<th:block layout:fragment="body">
-	Teste
-		<li th:replace="product/_items :: items"></li>
-	</th:block>
+		<div class="container">
+			<ul th:replace="product/_items :: items(${products})"></ul>
+			<br/>
+			<div class="clearfix"></div>
+			<th:block th:replace="layout/page :: pages_bootstrap(${products}, '/products')"></th:block>
+		</div>
+		
+		</th:block>
 </body>
 </html>
