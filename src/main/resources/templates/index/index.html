@@ -28,10 +28,11 @@
 			
 		</section>
 		
-		ololl
+		<br />
 		
-		
-		<li th:replace="product/_items :: items"></li>
+		<section class="container">
+			<li th:replace="product/_items :: items(${products})"></li>
+		</section>
 	</div>
 	</th:block>
 
