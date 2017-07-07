@@ -26,7 +26,7 @@ public class Product extends AbstractModel {
 			@AttributeOverride(name = "amount", column = @Column(nullable = false, name = "price_amount")) })
 	private Money price;
 
-	@Size(min = 100, max = 1500, message="Description size must be between 100 and 1500")
+	@Size(min = 50, max = 1500, message="Description size must be between 50 and 1500")
 	@Column(length = 1500)
 	private String description;
 

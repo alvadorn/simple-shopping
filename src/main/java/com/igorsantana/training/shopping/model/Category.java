@@ -19,7 +19,7 @@ public class Category extends AbstractModel {
 	@Column(nullable = false)
 	private String name;
 
-	@Size(min = 50, max = 5500, message = "Description size must be between 50 and 500 characters")
+	@Size(min = 5, max = 5500, message = "Description size must be between 5 and 500 characters")
 	@Column(nullable = false, length = 500)
 	private String description;
 
