@@ -1,10 +1,11 @@
-<section layout:decorator="layout/admin_layout" layout:fragment="body" class="container">
+<html layout:decorator="layout/admin_layout" th:with="activeTab='categories'">
+<section layout:fragment="body" class="container">
 	<h1 class="text-center">Show Category Information</h1>
 	<article class="jumbotron">
 		<label>Name</label>
 		<p th:text="${category.name}"></p>
 		<label>Description</label>
-		<p class="text-justify" th:text="${category.description}"></p>
+		<p class="text-justify break" th:text="${category.description}"></p>
 		<label>Quantity of products</label>
 		<p th:text="${category.products.size()}"></p>
 		<div class="btn-group btn-group-lg">
@@ -38,3 +39,4 @@
 		</div>
 	</article>
 </section>
+</html>

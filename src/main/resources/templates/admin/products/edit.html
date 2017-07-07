@@ -1,4 +1,6 @@
-<section layout:decorator="layout/admin_layout" layout:fragment="body" class="container">
+<html layout:decorator="layout/admin_layout" th:with="activeTab='products'">
+<section layout:fragment="body" class="container">
 	<h1>Edit Product</h1>
 	<th:block th:replace="admin/products/_form :: form(product, ${categories}, '/admin/products/update', 'POST', 'PUT')"></th:block>
 </section>
+</html>

@@ -1,0 +1,25 @@
+.fix-table {
+	table-layout:fixed;
+	width: 100%;
+	word-break: break-all;
+}
+
+.break {
+	word-break: break-all;
+}
+
+.nav >li >a {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.navbar-brand {
+  padding: 0px;
+  height: 80px;
+}
+
+.navbar-brand > img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}

@@ -7,7 +7,7 @@
 	<link th:href="@{/stylesheets/admin.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<header th:fragment="header"></header>
+	<header th:replace="layout/admin_header :: header(${activeTab})"></header>
 	<section layout:fragment="body"></section>
 	<footer th:fragment="footer"></footer>
 	

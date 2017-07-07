@@ -1,4 +1,5 @@
-<section layout:decorator="layout/admin_layout" layout:fragment="body" class="container">
+<html layout:decorator="layout/admin_layout" th:with="activeTab='products'">
+<section layout:fragment="body" class="container">
 	<h1 class="text-center">Show Product Information</h1>
 	<article class="jumbotron">
 		<div class="row">
@@ -47,3 +48,4 @@
 		</div>
 	</article>
 </section>
+</html>

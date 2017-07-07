@@ -1,3 +1,39 @@
-<header th:fragment="body">
-	<div></div>
+<header th:fragment="header(activeTab)">
+	<div class="container">
+	  <nav class="navbar navbar-default">
+	    <div class="container-fluid">
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+	          <span class="sr-only">Toggle navigation</span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand" th:href="@{/}"><img th:src="@{/img/logo.png}" alt="Neo Shopping" />
+	        </a>
+	      </div>
+	      <div id="navbar1" class="navbar-collapse collapse">
+	        <ul class="nav navbar-nav">
+	          <li th:class="${activeTab == 'home'}? 'active'"><a th:href="@{/admin/}">Home</a></li>
+	          <li class="dropdown" th:classappend="${activeTab == 'categories'}? 'active'">
+	          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
+	          	<ul class="dropdown-menu" role="menu">
+	          		<li><a th:href="@{/admin/categories}">List</a></li>
+	          		<li><a th:href="@{/admin/categories/new}">New</a></li>
+	          	</ul>
+	          </li>
+	          <li class="dropdown" th:classappend="${activeTab == 'products'}? 'active'">
+	          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Products <span class="caret"></span></a>
+	          	<ul class="dropdown-menu" role="menu">
+	          		<li><a th:href="@{/admin/products}">List</a></li>
+	          		<li><a th:href="@{/admin/products/new}">New</a></li>
+	          	</ul>
+	          </li>
+	        </ul>
+	      </div>
+	      <!--/.nav-collapse -->
+	    </div>
+	    <!--/.container-fluid -->
+	  </nav>
+	</div>
 </header>
