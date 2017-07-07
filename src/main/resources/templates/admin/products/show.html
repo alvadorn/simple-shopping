@@ -1,0 +1,49 @@
+<section layout:decorator="layout/admin_layout" layout:fragment="body" class="container">
+	<h1 class="text-center">Show Product Information</h1>
+	<article class="jumbotron">
+		<div class="row">
+			<div class="col-sm-6">
+				<label>Name</label>
+				<p th:text="${product.name}"></p>
+				<label>Price</label>
+				<p th:text="${product.price}"></p>
+				<label>Category</label>
+				<p th:text="${product.category.name}"></p>
+				<label>Description</label>
+				<p class="text-justify" th:text="${product.description}"></p>
+			</div>
+			<div class="col-sm-6">
+				<img th:src="@{${product.photoUrl}}" />			
+			</div>
+		</div>
+		<div class="btn-group btn-group-lg">
+			<a th:href="@{/admin/products}" class="btn btn-info">Back</a>
+			<a th:href="@{/admin/products/edit/{id}(id = ${product.id})}" class="btn btn-warning">Edit</a>
+			<button class="btn btn-danger" data-toggle="modal" data-target="#delete-product">Delete</button>
+			
+			<div id="delete-product" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+       						<h4 class="modal-title">Are you sure about deleting this product?</h4>
+						</div>
+					    <div class="modal-body">
+					    	<div class="row">
+					    		<div class="col-sm-offset-8 col-sm-2">
+						      		<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+							  	</div>
+							  	<div class="col-sm-2">
+								  <form method="POST" th:action="@{/admin/products/delete/{id}(id=${product.id})}">
+							      	<input type="hidden" name="_method" value="DELETE" />
+							      	<button type="submit" class="btn btn-danger">Delete</button>
+							      </form>
+							 	</div>
+					     	 </div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+</section>

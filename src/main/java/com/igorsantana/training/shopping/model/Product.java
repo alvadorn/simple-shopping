@@ -5,6 +5,7 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Product extends AbstractModel {
@@ -13,8 +14,9 @@ public class Product extends AbstractModel {
 	private String name;
 
 	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "currency", column = @Column(name = "price_currency")),
-			@AttributeOverride(name = "amount", column = @Column(name = "price_amount")) })
+	@AttributeOverrides({
+			@AttributeOverride(name = "currency", column = @Column(nullable = false, name = "price_currency")),
+			@AttributeOverride(name = "amount", column = @Column(nullable = false, name = "price_amount")) })
 	private Money price;
 
 	@Column(length = 1500)
@@ -25,6 +27,9 @@ public class Product extends AbstractModel {
 
 	@Column(name = "slug", length = 500, unique = true)
 	private String slug;
+
+	@ManyToOne(optional = false)
+	private Category category;
 
 	public String getName() {
 		return name;
@@ -64,6 +69,14 @@ public class Product extends AbstractModel {
 
 	public void setSlug(String slug) {
 		this.slug = slug;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

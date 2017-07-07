@@ -1,0 +1,4 @@
+<section layout:decorator="layout/admin_layout" layout:fragment="body" class="container">
+	<h1>Edit Product</h1>
+	<th:block th:replace="admin/products/_form :: form(product, categories, 'POST', 'PUT')"></th:block>
+</section>

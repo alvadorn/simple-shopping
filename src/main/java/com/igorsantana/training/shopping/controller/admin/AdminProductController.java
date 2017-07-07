@@ -8,9 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -19,16 +19,23 @@ import com.igorsantana.training.shopping.repository.ProductRepository;
 
 @Controller
 @RequestMapping("/admin/products")
-public class ProductController {
+public class AdminProductController {
 
 	@Autowired
 	private ProductRepository repository;
 
 	@RequestMapping({ "/", "" })
-	public ModelAndView index(@PageableDefault() Pageable pageable) {
-		ModelAndView mav = new ModelAndView("admin/products");
+	public ModelAndView index(@PageableDefault(size = 10) Pageable pageable) {
+		ModelAndView mav = new ModelAndView("admin/products/list");
 		Page<Product> pages = repository.findAllByRemovedIsNullOrRemovedFalse(pageable);
 		mav.addObject("products", pages);
+		return mav;
+	}
+
+	@RequestMapping("/{id}")
+	public ModelAndView show(@PathVariable("id") Product product) {
+		ModelAndView mav = new ModelAndView("admin/products/show");
+		mav.addObject("product", product);
 		return mav;
 	}
 
@@ -48,13 +55,9 @@ public class ProductController {
 	}
 
 	@RequestMapping("/edit/{id}")
-	public ModelAndView edit(@RequestParam("id") Product product) {
-		Product found = repository.findOneByRemoved(false);
-		if (found == null) {
-			return new ModelAndView("error/404");
-		}
+	public ModelAndView edit(@PathVariable("id") Product product) {
 		ModelAndView mav = new ModelAndView("admin/products/edit");
-		mav.addObject("product", found);
+		mav.addObject("product", product);
 		return mav;
 	}
 
@@ -68,8 +71,8 @@ public class ProductController {
 		return new ModelAndView("redirect:/admin/products");
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public ModelAndView delete(Product product, RedirectAttributes attrib) {
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public ModelAndView delete(@PathVariable("id") Product product, RedirectAttributes attrib) {
 		OffsetDateTime time = OffsetDateTime.now();
 		product.setRemoved(true);
 		product.setUpdatedAt(time);
