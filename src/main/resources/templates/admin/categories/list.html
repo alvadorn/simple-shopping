@@ -7,7 +7,7 @@
 		</thead>
 		<tbody>
 			<tr th:each="category : ${categories.getContent()}">
-				<td class="text-center"><a th:href="@{/admin/category/{id}(id = ${category.id})}" th:text="${category.name}"></a></td>
+				<td class="text-center"><a th:href="@{/admin/categories/{id}(id = ${category.id})}" th:text="${category.name}"></a></td>
 				<td class="text-center" th:text="${category.description}"></td>
 			</tr>
 		</tbody>
