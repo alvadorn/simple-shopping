@@ -59,6 +59,7 @@ public class AdminProductController {
 	public ModelAndView _new(Product product) {
 		ModelAndView mav = new ModelAndView("admin/products/new");
 		mav.addObject("product", product);
+		mav.addObject("categories", categoriesRepository.findAll());
 		return mav;
 	}
 
