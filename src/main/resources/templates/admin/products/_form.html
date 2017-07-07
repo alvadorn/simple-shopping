@@ -1,5 +1,13 @@
-<th:block th:fragment="form(product, categories, method, _method)">
-<form th:object="${product}" th:method="${method}">
+<th:block th:fragment="form(product, categories, url, method, _method)">
+<form th:object="${product}" th:method="${method}" th:action="@{${url}}">
+	<div class="form-group alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<th:block th:each="error: ${#fields.detailedErrors()}">
+			<span class="glyphicon glyphicon-remove"></span>
+			<span th:text="${error.message}"></span> <br />
+		</th:block>
+	</div>
+
 	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 	<input type="hidden" name="_method" th:attr="value=${_method}" />
 	<input type="hidden" id="id" th:field="*{id}" />
@@ -7,13 +15,13 @@
 		<label for="Name" class="control-label">Name</label>
 		<input id="nome" type="text" th:field="*{name}" class="form-control"/>
 	</div>
-	<div class="form-group" th:classappend="${#fields.hasErrors('price')}? has-error">
+	<div class="form-group" th:classappend="${#fields.hasErrors('price.currency') or #fields.hasErrors('price.amount')}? has-error">
 		<label for="price" class="control-label">Price</label>
 		<div class="row">
-		<div class="col-sm-1">
+		<div class="col-sm-1" th:classappend="${#fields.hasErrors('price.currency')}? has-error">
 			<input id="price-currency" type="text" th:field="*{price.currency}" class="form-control" />
 		</div>
-		<div class="col-sm-11">
+		<div class="col-sm-11" th:classappend="${#fields.hasErrors('price.amount')}? has-error">
 			<input id="price-amount" type="text" th:field="*{price.amount}" class="form-control" />
 		</div>
 		</div>
@@ -21,6 +29,18 @@
 	<div class="form-group" th:classappend="${#fields.hasErrors('photoUrl')}? has-error">
 		<label for="photoUrl" class="control-label">Photo Url</label>
 		<input id="photoUrl" type="text" th:field="*{photoUrl}" class="form-control"/>
+	</div>
+	<div class="form-group" th:classappend="${#fields.hasErrors('category')}? has-error">
+		<label for="category" class="control-label">Category</label>
+		<select id="category" class="form-control" th:field="*{category}">
+			<option value="">Select Product Category</option>
+			<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+		</select>
+	</div>
+	
+	<div class="form-group" th:classappend="${#fields.hasErrors('description')}? has-error">
+		<label for="description" class="control-label">Description</label>
+		<textarea id="description" type="text" th:field="*{description}" class="form-control"/>
 	</div>
 	<button type="submit">Update</button>
 </form>

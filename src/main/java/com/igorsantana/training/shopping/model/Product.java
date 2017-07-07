@@ -6,19 +6,27 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Product extends AbstractModel {
 
+	@NotBlank(message = "{name.notBlank}")
 	@Column
 	private String name;
 
+	@Valid
 	@Embedded
 	@AttributeOverrides({
 			@AttributeOverride(name = "currency", column = @Column(nullable = false, name = "price_currency")),
 			@AttributeOverride(name = "amount", column = @Column(nullable = false, name = "price_amount")) })
 	private Money price;
 
+	@Size(min = 100, max = 1500, message="Description size must be between 100 and 1500")
 	@Column(length = 1500)
 	private String description;
 
@@ -28,6 +36,7 @@ public class Product extends AbstractModel {
 	@Column(name = "slug", length = 500, unique = true)
 	private String slug;
 
+	@NotNull(message = "Category must be chosen")
 	@ManyToOne(optional = false)
 	private Category category;
 
