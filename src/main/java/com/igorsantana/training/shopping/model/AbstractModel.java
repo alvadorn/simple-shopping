@@ -1,13 +1,13 @@
 package com.igorsantana.training.shopping.model;
 
 import java.time.OffsetDateTime;
-import java.time.OffsetDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+
+import org.hibernate.annotations.ColumnDefault;
 
 @MappedSuperclass
 public abstract class AbstractModel {
