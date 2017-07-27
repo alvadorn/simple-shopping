@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	
-	@Resource(name = "userDetailsService")
+	@Autowired
 	private UserDetailsService userDetailsService;
 	
 
@@ -39,11 +39,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf()
 				.and()
 			.authorizeRequests()
-				//.antMatchers("/admin/**")
-				//	.authenticated()
-				.anyRequest()
+				.antMatchers("/stylesheets/**","/admin/first_register")
 					.permitAll()
-				.and();				
+				.antMatchers("/admin/**")
+					.authenticated()
+					.and()
+				.formLogin()
+					.loginPage("/admin/login")
+					.permitAll()
+					.and()
+				.logout()
+					.permitAll();
 	}
 	
 }

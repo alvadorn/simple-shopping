@@ -1,18 +1,34 @@
 package com.igorsantana.training.shopping.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "role")
 public class Role extends AbstractModel {
 
 	private String name;
-	
+
 	@ManyToMany
-	private List<User> users;
+	private Set<User> users;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
 }
