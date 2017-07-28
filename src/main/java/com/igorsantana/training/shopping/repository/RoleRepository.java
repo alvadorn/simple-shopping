@@ -6,4 +6,6 @@ import com.igorsantana.training.shopping.model.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
+	Role findByName(String name);
+
 }

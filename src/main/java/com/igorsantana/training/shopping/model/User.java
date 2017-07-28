@@ -1,5 +1,6 @@
 package com.igorsantana.training.shopping.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "\"user\"")
@@ -20,6 +22,17 @@ public class User extends AbstractModel {
 	private String email;
 	@Column
 	private String password;
+
+	@Transient
+	private String passwordConfirmation;
+	
+	public String getPasswordConfirmation() {
+		return passwordConfirmation;
+	}
+
+	public void setPasswordConfirmation(String passwordConfirmation) {
+		this.passwordConfirmation = passwordConfirmation;
+	}
 
 	public String getUsername() {
 		return username;
@@ -49,12 +62,20 @@ public class User extends AbstractModel {
 		this.email = email;
 	}
 
+	@Transient
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public void addRole(Role role) {
+		if (roles == null) {
+			roles = new HashSet<>();
+		}
+		roles.add(role);
 	}
 
 }

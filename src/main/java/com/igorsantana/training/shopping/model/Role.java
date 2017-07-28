@@ -3,6 +3,7 @@ package com.igorsantana.training.shopping.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -13,6 +14,7 @@ public class Role extends AbstractModel {
 	private String name;
 
 	@ManyToMany
+	@JoinTable(name = "user_role")
 	private Set<User> users;
 
 	public String getName() {

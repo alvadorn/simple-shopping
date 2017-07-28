@@ -30,6 +30,12 @@
 	          	</ul>
 	          </li>
 	        </ul>
+	        <ul class="nav navbar-nav navbar-right">
+				<li>
+					<p class="navbar-text" th:text="${#authentication.name}"></p>
+				</li>
+				<li><a href="#" th:href="@{/admin/logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				</ul>
 	      </div>
 	      <!--/.nav-collapse -->
 	    </div>

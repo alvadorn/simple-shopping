@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.igorsantana.training.shopping.model.Role;
 import com.igorsantana.training.shopping.model.User;
 import com.igorsantana.training.shopping.repository.RoleRepository;
 import com.igorsantana.training.shopping.repository.UserRepository;
@@ -21,6 +22,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void save(User user) {
 		user.setPassword(encoder.encode(user.getPassword()));
+
+		Role role = roleRepository.findByName("WORKER");
+		user.addRole(role);
+		
 		userRepository.save(user);
 	}
 
