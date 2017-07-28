@@ -11,6 +11,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "category")
 public class Category extends AbstractModel {
@@ -24,6 +26,7 @@ public class Category extends AbstractModel {
 	private String description;
 
 	@OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+	@JsonIgnore
 	private List<Product> products;
 
 	public String getName() {

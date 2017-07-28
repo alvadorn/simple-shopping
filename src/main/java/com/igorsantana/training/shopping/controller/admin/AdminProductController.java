@@ -41,10 +41,11 @@ public class AdminProductController {
 	}
 
 	@RequestMapping({ "/", "" })
-	public ModelAndView index(@PageableDefault(size = 10) Pageable pageable) {
+	public ModelAndView index(Product product, @PageableDefault(size = 10) Pageable pageable) {
 		ModelAndView mav = new ModelAndView("admin/products/list");
 		Page<Product> pages = repository.findAllByRemovedIsNullOrRemovedFalse(pageable);
 		mav.addObject("products", pages);
+		mav.addObject("categories", categoriesRepository.findAll());
 		return mav;
 	}
 
